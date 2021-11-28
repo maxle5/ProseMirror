@@ -58,7 +58,7 @@ namespace ProseMirror.Net.UnitTests.Marks
             doc.LoadHtml("<span>This should be superscript</span>");
 
             // act
-            var act = () => new Superscript().Data(doc.DocumentNode.ChildNodes[0]);
+            Func<Model.Marks> act = () => new Superscript().Data(doc.DocumentNode.ChildNodes[0]);
 
             // assert
             act.Should().Throw<InvalidOperationException>();

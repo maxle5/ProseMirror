@@ -58,7 +58,7 @@ namespace ProseMirror.Net.UnitTests.Nodes
             doc.LoadHtml("<span>This should be horizontal rule</span>");
 
             // act
-            var act = () => new HorizontalRule().Data(doc.DocumentNode.ChildNodes[0]);
+            Func<Model.Node> act = () => new HorizontalRule().Data(doc.DocumentNode.ChildNodes[0]);
 
             // assert
             act.Should().Throw<InvalidOperationException>();

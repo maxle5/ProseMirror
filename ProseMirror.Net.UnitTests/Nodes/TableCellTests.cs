@@ -58,7 +58,7 @@ namespace ProseMirror.Net.UnitTests.Nodes
             doc.LoadHtml("<span>This should be table cell</span>");
 
             // act
-            var act = () => new TableCell().Data(doc.DocumentNode.ChildNodes[0]);
+            Func<Model.Node> act = () => new TableCell().Data(doc.DocumentNode.ChildNodes[0]);
 
             // assert
             act.Should().Throw<InvalidOperationException>();
