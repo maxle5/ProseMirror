@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<PackageId>Maxle5.ProseMirror</PackageId>
+		<Authors>Max Lefebvre</Authors>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/maxle5/ProseMirror</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.38" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>Maxle5.ProseMirror.UnitTests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+</Project>
