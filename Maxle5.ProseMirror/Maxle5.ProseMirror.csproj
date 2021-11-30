@@ -6,8 +6,12 @@
 	</PropertyGroup>
 	
 	<PropertyGroup>
-		<PackageId>Maxle5.ProseMirror</PackageId>
 		<Authors>Max Lefebvre</Authors>
+		
+		<PackageId>Maxle5.ProseMirror</PackageId>
+		<PackageIconUrl>https://github.com/maxle5/ProseMirror/tree/master/Maxle5.ProseMirror/Assets/icon.png</PackageIconUrl>		
+		<Description>Maxle5.ProseMirror is a library used for converting ProseMirror content to/from JSON and HTML</Description>
+		
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/maxle5/ProseMirror</RepositoryUrl>
 	</PropertyGroup>
