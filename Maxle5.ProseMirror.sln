@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maxle5.ProseMirror", "Maxle5.ProseMirror\Maxle5.ProseMirror.csproj", "{662E78DF-1664-48E0-924F-6855FB79AFF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maxle5.ProseMirror.UnitTests", "Maxle5.ProseMirror.UnitTests\Maxle5.ProseMirror.UnitTests.csproj", "{423B9894-C5C3-4982-929F-C63F9612D357}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{662E78DF-1664-48E0-924F-6855FB79AFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{662E78DF-1664-48E0-924F-6855FB79AFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{662E78DF-1664-48E0-924F-6855FB79AFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{662E78DF-1664-48E0-924F-6855FB79AFF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423B9894-C5C3-4982-929F-C63F9612D357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423B9894-C5C3-4982-929F-C63F9612D357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423B9894-C5C3-4982-929F-C63F9612D357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423B9894-C5C3-4982-929F-C63F9612D357}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8FA5B0B-4A12-4F40-A6D9-454E12D14B93}
+	EndGlobalSection
+EndGlobal
