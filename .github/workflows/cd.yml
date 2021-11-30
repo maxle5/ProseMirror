@@ -24,6 +24,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push
-      run: dotnet nuget push Maxle5.ProseMirror.${VERSION}.nupkg --source https://nuget.pkg.github.com/maxle5/index.json --api-key ${NUGET_API_KEY}
+      run: dotnet nuget push Maxle5.ProseMirror.${VERSION}.nupkg --source https://nuget.pkg.github.com/maxle5/index.json --api-key ${GITHUB_TOKEN}
       env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
