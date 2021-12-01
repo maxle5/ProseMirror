@@ -23,12 +23,13 @@ namespace Maxle5.ProseMirror.UnitTests.Models.Marks
             subscript.Type.Should().Be("textStyle");
         }
 
-        [Fact]
-        public void Attrs_ShouldIncludeColor_WhenHtmlStyleAttributePresentWithColorProperty()
+        [Theory]
+        [InlineData("<p style='color:red;text-indent:0;'>centered text</p>", "red")]
+        [InlineData("<p style='color: green;text-indent:0;'>centered text</p>", "green")]
+        [InlineData("<p style='text-indent:0;color: blue;'>centered text</p>", "blue")]
+        public void Attrs_ShouldIncludeColor_WhenHtmlStyleAttributePresentWithColorProperty(string html, string color)
         {
             // arrange
-            const string color = "red";
-            var html = $"<span style='color: {color}'>this is some text</span>";
             var document = new HtmlDocument();
             document.LoadHtml(html);
             var node = document.DocumentNode.ChildNodes[0];
