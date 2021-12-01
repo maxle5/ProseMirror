@@ -7,14 +7,10 @@ using System.Linq;
 
 namespace Maxle5.ProseMirror.Services
 {
-    public class HtmlConverter
+    internal class HtmlConverter
     {
         private readonly HtmlDocument _document = new HtmlDocument();
         private readonly List<MarkDefinition> _storedMarks = new List<MarkDefinition>();
-
-        internal HtmlConverter()
-        {
-        }
 
         public string Convert(NodeDefinition node)
         {
@@ -27,13 +23,14 @@ namespace Maxle5.ProseMirror.Services
 
             return new Document
             {
-                Content = RenderChildren(GetDocumentBody()).ToArray()
+                Content = RenderChildren(GetRootNode()).ToArray()
             };
         }
 
-        private HtmlNode GetDocumentBody()
+        private HtmlNode GetRootNode()
         {
-            return _document.DocumentNode.Descendants("body").FirstOrDefault();
+            var bodyNode = _document.DocumentNode.Descendants("body").FirstOrDefault();
+            return bodyNode ?? _document.DocumentNode; // return first node if <body> does not exist
         }
 
         private IEnumerable<NodeDefinition> RenderChildren(HtmlNode htmlNode)
