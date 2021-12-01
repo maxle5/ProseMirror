@@ -23,17 +23,17 @@ namespace Maxle5.ProseMirror.Models.Marks
 
             if (styleAttribute != null)
             {
-                foreach (var style in styleAttribute.Value.Split(';'))
+                foreach (var style in styleAttribute.Value.Split(';').Select(style => style.Replace(" ", "")))
                 {
                     const string color = "color:";
-                    if (style.Replace(" ", "").StartsWith(color))
+                    if (style.StartsWith(color))
                     {
                         if (attributes == null)
                         {
                             attributes = new TextStyleAttributes();
                         }
 
-                        attributes.Color = style.Substring(color.Length + 1);
+                        attributes.Color = style.Substring(color.Length);
                     }
                 }
             }
