@@ -22,17 +22,17 @@ namespace Maxle5.ProseMirror.Models.Nodes
 
             if (styleAttribute != null)
             {
-                foreach (var style in styleAttribute.Value.Split(';'))
+                foreach (var style in styleAttribute.Value.Split(';').Select(style => style.Replace(" ", "")))
                 {
                     const string textAlign = "text-align:";
-                    if (style.Replace(" ", "").StartsWith(textAlign))
+                    if (style.StartsWith(textAlign))
                     {
                         if (attributes == null)
                         {
                             attributes = new ParagraphAttributes();
                         }
 
-                        attributes.TextAlign = style.Substring(textAlign.Length + 1);
+                        attributes.TextAlign = style.Substring(textAlign.Length);
                     }
                 }
             }
