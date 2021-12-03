@@ -1,6 +1,6 @@
 # Maxle5.ProseMirror
 
-![Nuget](https://img.shields.io/nuget/v/Maxle5.ProseMirror?style=flat-square)
+[![Nuget](https://img.shields.io/nuget/v/Maxle5.ProseMirror?style=flat-square)](https://www.nuget.org/packages/Maxle5.ProseMirror)
 [![Build](https://github.com/maxle5/ProseMirror/actions/workflows/ci.yml/badge.svg)](https://github.com/maxle5/ProseMirror/actions/workflows/ci.yml)
 
 Maxle5.ProseMirror is a library used for converting [ProseMirror](https://github.com/ProseMirror/prosemirror) content to/from JSON and HTML
