@@ -58,6 +58,22 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             node.Should().NotBeNull();
             node.Should().BeOfType<Table>();
         }
+        
+        [Fact]
+        public void Get_ShouldReturnTable_WhenTagTableAndNoTBodyTags()
+        {
+            // arrange
+            const string html = "<table><tr><td>this is some text<td></tr></table>";
+            var document = new HtmlDocument();
+            document.LoadHtml(html);
+
+            // act
+            var node = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+
+            // assert
+            node.Should().NotBeNull();
+            node.Should().BeOfType<Table>();
+        }
 
         [Fact]
         public void Get_ShouldReturnCodeBlock_WhenTagCodeAndParentParentTagPre()

@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Maxle5.ProseMirror.Models;
+using Maxle5.ProseMirror.Models.Marks;
 using Maxle5.ProseMirror.Models.Nodes;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Maxle5.ProseMirror.Services
 
         public string Convert(NodeDefinition node)
         {
-            throw new NotImplementedException();
+            return RenderChildren(node).OuterHtml;
         }
 
         public NodeDefinition Convert(string html)
@@ -31,6 +32,18 @@ namespace Maxle5.ProseMirror.Services
         {
             var bodyNode = _document.DocumentNode.Descendants("body").FirstOrDefault();
             return bodyNode ?? _document.DocumentNode; // return first node if <body> does not exist
+        }
+
+        private HtmlNode RenderChildren(NodeDefinition node)
+        {
+            var tag = ConvertNodeToHtmlNode(node);
+
+            foreach (var child in node?.Content ?? Enumerable.Empty<NodeDefinition>())
+            {
+                tag.AppendChild(RenderChildren(child));
+            }
+
+            return tag.ParentNode ?? tag;
         }
 
         private IEnumerable<NodeDefinition> RenderChildren(HtmlNode htmlNode)
@@ -89,6 +102,23 @@ namespace Maxle5.ProseMirror.Services
             }
 
             return nodes;
+        }
+
+        private HtmlNode ConvertNodeToHtmlNode(NodeDefinition node)
+        {
+            return WithMarks(node, node.RenderHtmlNode());
+        }
+
+        private static HtmlNode WithMarks(NodeDefinition node, HtmlNode htmlNode)
+        {
+            HtmlNode resultNode = htmlNode;
+            foreach(var mark in node.Marks?.Reverse() ?? Array.Empty<MarkDefinition>())
+            {
+                var markHtmlNode = mark.RenderHtmlNode();
+                resultNode = markHtmlNode.AppendChild(resultNode).ParentNode;
+            }
+
+            return resultNode;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HtmlAgilityPack;
+using System.Collections.Generic;
 
 namespace Maxle5.ProseMirror.Models
 {
@@ -17,5 +18,7 @@ namespace Maxle5.ProseMirror.Models
         {
             Type = type;
         }
+
+        public abstract HtmlNode RenderHtmlNode();
     }
 }

@@ -20,10 +20,17 @@ namespace Maxle5.ProseMirror.Models.Nodes
             };
         }
 
+        public new HeadingAttributes Attrs { get; protected set; }
+
         public static int? GetLevel(string tagName)
         {
             var match = Regex.Match(tagName, "^h([1-6])$");
             return match.Success ? (int?)Convert.ToInt32(match.Groups[1].Value) : null;
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode($"<h{Attrs?.Level}></h{Attrs?.Level}>");
         }
     }
 }

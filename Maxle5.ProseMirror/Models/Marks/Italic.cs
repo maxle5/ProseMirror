@@ -1,4 +1,4 @@
-﻿using Maxle5.ProseMirror.Models;
+﻿using HtmlAgilityPack;
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
@@ -6,6 +6,11 @@ namespace Maxle5.ProseMirror.Models.Marks
     {
         public Italic() : base("italic")
         {
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode("<em></em>");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Maxle5.ProseMirror.Models;
 using Maxle5.ProseMirror.Models.Nodes;
+using System.Linq;
 
 namespace Maxle5.ProseMirror.Services
 {
@@ -48,7 +49,8 @@ namespace Maxle5.ProseMirror.Services
             {
                 return new Paragraph(htmlNode);
             }
-            else if (htmlNode.Name == "tbody" && htmlNode.ParentNode.Name == "table")
+            else if ((htmlNode.Name == "table" && !htmlNode.Descendants("tbody").Any()) ||
+                     (htmlNode.Name == "tbody" && htmlNode.ParentNode.Name == "table"))
             {
                 return new Table();
             }

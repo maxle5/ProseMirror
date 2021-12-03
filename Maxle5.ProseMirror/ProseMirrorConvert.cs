@@ -7,11 +7,10 @@ namespace Maxle5.ProseMirror
 {
     public static class ProseMirrorConvert
     {
-        // TODO: implement
-        //public static string SerializeToHtml(NodeDefinition rootNode)
-        //{
-        //    return new HtmlConverter().Convert(rootNode);
-        //}
+        public static string SerializeToHtml(NodeDefinition rootNode)
+        {
+            return new HtmlConverter().Convert(rootNode);
+        }
 
         public static string SerializeToJson(NodeDefinition rootNode)
         {

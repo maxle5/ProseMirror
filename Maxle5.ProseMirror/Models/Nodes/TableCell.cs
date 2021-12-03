@@ -1,15 +1,15 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 using System;
 using System.Linq;
+using System.Text;
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
     internal class TableCellAttributes : NodeAttributes
     {
-        public int Colspan { get; set; }
+        public int? Colspan { get; set; }
         public int[] Colwidth { get; set; }
-        public int Rowspan { get; set; }
+        public int? Rowspan { get; set; }
     }
 
     internal class TableCell : NodeDefinition
@@ -45,6 +45,31 @@ namespace Maxle5.ProseMirror.Models.Nodes
             }
 
             return attrs;
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            var htmlAttributes = new StringBuilder();
+            var tableCellAttrs = Attrs as TableCellAttributes;
+
+            var colspan = tableCellAttrs?.Colspan;
+            var colwidth = tableCellAttrs?.Colwidth;
+            var rowSpan = tableCellAttrs?.Rowspan;
+
+            if (colspan != null)
+            {
+                htmlAttributes.AppendLine($"colspan='{colspan}'");
+            }
+            if (rowSpan != null)
+            {
+                htmlAttributes.AppendLine($"rowspan='{rowSpan}'");
+            }
+            if (colwidth != null)
+            {
+                htmlAttributes.AppendLine($"colwidth='{string.Join(",", colwidth)}'");
+            }
+
+            return HtmlNode.CreateNode($"<td {htmlAttributes}></td>");
         }
     }
 }

@@ -1,9 +1,16 @@
-﻿namespace Maxle5.ProseMirror.Models.Marks
+﻿using HtmlAgilityPack;
+
+namespace Maxle5.ProseMirror.Models.Marks
 {
     internal class Underline : MarkDefinition
     {
         public Underline() : base("underline")
         {
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode("<u></u>");
         }
     }
 }

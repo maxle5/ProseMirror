@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 using System.Linq;
 
 namespace Maxle5.ProseMirror.Models.Marks
@@ -15,6 +14,8 @@ namespace Maxle5.ProseMirror.Models.Marks
         {
             Attrs = GetAttrs(node);
         }
+
+        public new TextStyleAttributes Attrs { get; protected set; }
 
         public static TextStyleAttributes GetAttrs(HtmlNode node)
         {
@@ -39,6 +40,11 @@ namespace Maxle5.ProseMirror.Models.Marks
             }
 
             return attributes;
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode($"<span style='color:{Attrs?.Color}'></span>");
         }
     }
 }
