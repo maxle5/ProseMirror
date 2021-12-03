@@ -1,4 +1,5 @@
-﻿using Maxle5.ProseMirror.Models;
+﻿using HtmlAgilityPack;
+using Maxle5.ProseMirror.Models;
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
@@ -12,6 +13,11 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public OrderedList() : base("orderedList")
         {
             Attrs = new OrderedListAttributes();
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode("<ol></ol>");
         }
     }
 }

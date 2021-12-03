@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 using System.Linq;
 
 namespace Maxle5.ProseMirror.Models.Marks
@@ -19,6 +18,13 @@ namespace Maxle5.ProseMirror.Models.Marks
                 Target = node.Attributes.FirstOrDefault(a => a.Name == "target")?.Value,
                 Href = node.Attributes.FirstOrDefault(a => a.Name == "href")?.Value
             };
+        }
+
+        public new LinkAttributes Attrs { get; protected set; }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode($"<a href='{Attrs?.Href}' target='{Attrs?.Target}'></a>");
         }
     }
 }

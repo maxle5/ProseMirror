@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<IsPackable>true</IsPackable>
+		<LangVersion>8.0</LangVersion>
 		<TargetFramework>netstandard2.0</TargetFramework>
 	</PropertyGroup>
 	

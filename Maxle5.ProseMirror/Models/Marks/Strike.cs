@@ -1,4 +1,5 @@
-﻿using Maxle5.ProseMirror.Models;
+﻿using HtmlAgilityPack;
+using Maxle5.ProseMirror.Models;
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
@@ -6,6 +7,11 @@ namespace Maxle5.ProseMirror.Models.Marks
     {
         public Strike() : base("strike")
         {
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode("<s></s>");
         }
     }
 }

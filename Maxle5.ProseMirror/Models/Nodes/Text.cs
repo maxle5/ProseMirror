@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
@@ -10,6 +9,11 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public TextNode(HtmlNode node) : base("text")
         {
             Text = node.InnerText.TrimStart('\n');
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode(Text);
         }
     }
 }

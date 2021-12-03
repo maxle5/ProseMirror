@@ -5,7 +5,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
 {
     internal class ParagraphAttributes : NodeAttributes
     {
-        public string TextAlign { get; set; } = "left";
+        public string TextAlign { get; set; }
     }
 
     internal class Paragraph : NodeDefinition
@@ -14,6 +14,8 @@ namespace Maxle5.ProseMirror.Models.Nodes
         {
             Attrs = GetAttrs(node);
         }
+
+        public new ParagraphAttributes Attrs { get; protected set; }
 
         private static ParagraphAttributes GetAttrs(HtmlNode node)
         {
@@ -38,6 +40,13 @@ namespace Maxle5.ProseMirror.Models.Nodes
             }
 
             return attributes;
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return !string.IsNullOrEmpty(Attrs?.TextAlign)
+                ? HtmlNode.CreateNode($"<p style='text-align: {Attrs.TextAlign}'></p>")
+                : HtmlNode.CreateNode("<p></p>");
         }
     }
 }

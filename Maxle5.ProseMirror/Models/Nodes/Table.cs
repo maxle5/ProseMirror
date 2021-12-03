@@ -1,4 +1,4 @@
-﻿using Maxle5.ProseMirror.Models;
+﻿using HtmlAgilityPack;
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
@@ -6,6 +6,11 @@ namespace Maxle5.ProseMirror.Models.Nodes
     {
         public Table() : base("table")
         {
+        }
+
+        public override HtmlNode RenderHtmlNode()
+        {
+            return HtmlNode.CreateNode("<table></table>").AppendChild(HtmlNode.CreateNode("<tbody></tbody>"));
         }
     }
 }

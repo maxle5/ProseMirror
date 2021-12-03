@@ -1,4 +1,6 @@
-﻿namespace Maxle5.ProseMirror.Models
+﻿using HtmlAgilityPack;
+
+namespace Maxle5.ProseMirror.Models
 {
     public abstract class MarkAttributes
     {
@@ -13,5 +15,7 @@
         {
             Type = type;
         }
+
+        public abstract HtmlNode RenderHtmlNode();
     }
 }
