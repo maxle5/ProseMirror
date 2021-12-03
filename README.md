@@ -25,5 +25,5 @@ Maxle5.ProseMirror is a library used for converting [ProseMirror](https://github
 
 **4. Convert ProseMirror object to HTML:**
 ```
-Not yet supported. Coming soon.
+var html = ProseMirrorConvert.SerializeToHtml(obj);
 ```
