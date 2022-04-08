@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Bold : MarkDefinition
+    internal class Bold : Mark
     {
         public Bold() : base("bold")
         {

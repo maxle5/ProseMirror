@@ -8,7 +8,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public string TextAlign { get; set; }
     }
 
-    internal class Paragraph : NodeDefinition
+    internal class Paragraph : Node
     {
         public Paragraph(HtmlNode node) : base("paragraph")
         {

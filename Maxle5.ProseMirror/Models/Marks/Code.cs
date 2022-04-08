@@ -1,9 +1,8 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Code : MarkDefinition
+    internal class Code : Mark
     {
         public Code() : base("code")
         {

@@ -15,7 +15,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public int? Width { get; set; }
     }
 
-    internal class Image : NodeDefinition
+    internal class Image : Node
     {
         public Image(HtmlNode node) : base("image")
         {
@@ -38,22 +38,22 @@ namespace Maxle5.ProseMirror.Models.Nodes
             var title = Attrs?.Title;
             var width = Attrs?.Width;
 
-            if(src != null)
+            if (src != null)
             {
                 sb.Append($"src='{src}' ");
             }
 
-            if(alt != null)
+            if (alt != null)
             {
                 sb.Append($"alt='{alt}'");
             }
 
-            if(title != null)
+            if (title != null)
             {
                 sb.Append($"title='{title}' ");
             }
 
-            if(width != null)
+            if (width != null)
             {
                 sb.Append($"width='{width.Value}' ");
             }

@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Italic : MarkDefinition
+    internal class Italic : Mark
     {
         public Italic() : base("italic")
         {

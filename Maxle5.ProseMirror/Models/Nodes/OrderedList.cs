@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using Maxle5.ProseMirror.Models;
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
@@ -8,7 +7,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public int Start { get; set; } = 1;
     }
 
-    internal class OrderedList : NodeDefinition
+    internal class OrderedList : Node
     {
         public OrderedList() : base("orderedList")
         {

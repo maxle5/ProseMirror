@@ -1,24 +1,31 @@
 ﻿using HtmlAgilityPack;
+using Maxle5.ProseMirror.Builders;
+using Maxle5.ProseMirror.Factories;
 using Maxle5.ProseMirror.Models;
-using Maxle5.ProseMirror.Models.Marks;
 using Maxle5.ProseMirror.Models.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Maxle5.ProseMirror.Services
+namespace Maxle5.ProseMirror
 {
     internal class HtmlConverter
     {
         private readonly HtmlDocument _document = new HtmlDocument();
-        private readonly List<MarkDefinition> _storedMarks = new List<MarkDefinition>();
+        private readonly List<Mark> _storedMarks = new List<Mark>();
+        private readonly IEnumerable<INodeBuilder> _customNodeBuilders;
 
-        public string Convert(NodeDefinition node)
+        public HtmlConverter(IEnumerable<INodeBuilder> customNodeBuilders = null)
+        {
+            _customNodeBuilders = customNodeBuilders ?? Enumerable.Empty<INodeBuilder>();
+        }
+
+        public string Convert(Node node)
         {
             return RenderChildren(node).OuterHtml;
         }
 
-        public NodeDefinition Convert(string html)
+        public Node Convert(string html)
         {
             _document.LoadHtml(html);
 
@@ -34,11 +41,11 @@ namespace Maxle5.ProseMirror.Services
             return bodyNode ?? _document.DocumentNode; // return first node if <body> does not exist
         }
 
-        private HtmlNode RenderChildren(NodeDefinition node)
+        private HtmlNode RenderChildren(Node node)
         {
             var tag = ConvertNodeToHtmlNode(node);
 
-            foreach (var child in node?.Content ?? Enumerable.Empty<NodeDefinition>())
+            foreach (var child in node?.Content ?? Enumerable.Empty<Node>())
             {
                 tag.AppendChild(RenderChildren(child));
             }
@@ -46,13 +53,13 @@ namespace Maxle5.ProseMirror.Services
             return tag.ParentNode ?? tag;
         }
 
-        private IEnumerable<NodeDefinition> RenderChildren(HtmlNode htmlNode)
+        private IEnumerable<Node> RenderChildren(HtmlNode htmlNode)
         {
-            var nodes = new List<NodeDefinition>();
+            var nodes = new List<Node>();
 
             foreach (var child in htmlNode.ChildNodes)
             {
-                var item = NodeDefinitionFactory.Get(child);
+                var item = NodeFactory.Get(child, _customNodeBuilders);
                 if (item != null)
                 {
                     if (item == null)
@@ -79,7 +86,7 @@ namespace Maxle5.ProseMirror.Services
                 }
                 else
                 {
-                    var mark = MarkDefinitionFactory.Get(child);
+                    var mark = MarkFactory.Get(child);
                     if (mark != null)
                     {
                         _storedMarks.Add(mark);
@@ -104,15 +111,15 @@ namespace Maxle5.ProseMirror.Services
             return nodes;
         }
 
-        private HtmlNode ConvertNodeToHtmlNode(NodeDefinition node)
+        private HtmlNode ConvertNodeToHtmlNode(Node node)
         {
             return WithMarks(node, node.RenderHtmlNode());
         }
 
-        private static HtmlNode WithMarks(NodeDefinition node, HtmlNode htmlNode)
+        private static HtmlNode WithMarks(Node node, HtmlNode htmlNode)
         {
-            HtmlNode resultNode = htmlNode;
-            foreach(var mark in node.Marks?.Reverse() ?? Array.Empty<MarkDefinition>())
+            var resultNode = htmlNode;
+            foreach (var mark in node.Marks?.Reverse() ?? Array.Empty<Mark>())
             {
                 var markHtmlNode = mark.RenderHtmlNode();
                 resultNode = markHtmlNode.AppendChild(resultNode).ParentNode;

@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Superscript : MarkDefinition
+    internal class Superscript : Mark
     {
         public Superscript() : base("superscript")
         {

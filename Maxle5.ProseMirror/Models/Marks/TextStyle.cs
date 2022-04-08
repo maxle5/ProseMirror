@@ -8,7 +8,7 @@ namespace Maxle5.ProseMirror.Models.Marks
         public string Color { get; set; }
     }
 
-    internal class TextStyle : MarkDefinition
+    internal class TextStyle : Mark
     {
         public TextStyle(HtmlNode node) : base("textStyle")
         {

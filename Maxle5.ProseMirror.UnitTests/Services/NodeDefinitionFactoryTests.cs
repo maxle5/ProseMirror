@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using HtmlAgilityPack;
+using Maxle5.ProseMirror.Factories;
 using Maxle5.ProseMirror.Models.Nodes;
-using Maxle5.ProseMirror.Services;
 using System;
 using Xunit;
 
@@ -36,7 +36,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var mark = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var mark = NodeFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             mark.Should().NotBeNull();
@@ -52,13 +52,13 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var node = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0].ChildNodes[0]);
+            var node = NodeFactory.Get(document.DocumentNode.ChildNodes[0].ChildNodes[0]);
 
             // assert
             node.Should().NotBeNull();
             node.Should().BeOfType<Table>();
         }
-        
+
         [Fact]
         public void Get_ShouldReturnTable_WhenTagTableAndNoTBodyTags()
         {
@@ -68,7 +68,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var node = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var node = NodeFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             node.Should().NotBeNull();
@@ -84,7 +84,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var node = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0].ChildNodes[0]);
+            var node = NodeFactory.Get(document.DocumentNode.ChildNodes[0].ChildNodes[0]);
 
             // assert
             node.Should().NotBeNull();
@@ -100,7 +100,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var node = NodeDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var node = NodeFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             node.Should().BeNull();

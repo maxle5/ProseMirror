@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class Blockquote : NodeDefinition
+    internal class Blockquote : Node
     {
         public Blockquote() : base("blockquote")
         {

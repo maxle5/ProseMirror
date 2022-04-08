@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class HorizontalRule : NodeDefinition
+    internal class HorizontalRule : Node
     {
         public HorizontalRule() : base("horizontalRule")
         {

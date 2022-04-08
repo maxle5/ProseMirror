@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Subscript : MarkDefinition
+    internal class Subscript : Mark
     {
         public Subscript() : base("subscript")
         {
