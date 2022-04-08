@@ -9,7 +9,7 @@ namespace Maxle5.ProseMirror.Models.Marks
         public string Href { get; set; }
     }
 
-    internal class Link : MarkDefinition
+    internal class Link : Mark
     {
         public Link(HtmlNode node) : base("link")
         {

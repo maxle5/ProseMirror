@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class CodeBlock : NodeDefinition
+    internal class CodeBlock : Node
     {
         public CodeBlock() : base("codeBlock")
         {

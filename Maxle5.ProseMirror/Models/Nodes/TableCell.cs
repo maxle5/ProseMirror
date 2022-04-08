@@ -12,7 +12,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public int? Rowspan { get; set; }
     }
 
-    internal class TableCell : NodeDefinition
+    internal class TableCell : Node
     {
         public TableCell(HtmlNode node, string type = "tableCell") : base(type)
         {

@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Maxle5.ProseMirror.Services;
 using Xunit;
 
 namespace Maxle5.ProseMirror.UnitTests.Services
@@ -37,6 +36,47 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             // assert
             html.Should().NotBeNull();
             html.Should().Be(_expectedHtml);
+        }
+
+        /// <summary>
+        /// <example>
+        /// <span>&gt;</span> -> ">"
+        /// </example>
+        /// </summary>
+        [Fact]
+        public void Convert_ShouldReturnProseMirrorWithUnescapedText_WhenHtmlContainsEscapedContent()
+        {
+            // arrange
+            var converter = new HtmlConverter();
+
+            // act
+            var obj = converter.Convert("<span>&gt;</span>");
+            var json = ProseMirrorConvert.SerializeToJson(obj);
+
+            // assert
+            obj.Should().NotBeNull();
+            json.Should().Be("{\"type\":\"doc\",\"content\":[{\"text\":\">\",\"type\":\"text\"}]}");
+        }
+
+        /// <summary>
+        /// <example>
+        /// ">" -> <span>&gt;</span> 
+        /// </example>
+        /// </summary>
+        [Fact]
+        public void Convert_ShouldReturnEscapedHtml_WhenProseMirrorContainsUnescapedContent()
+        {
+            // arrange
+            var converter = new HtmlConverter();
+            const string expectedHtml = "<html><body>&gt;</body></html>";
+
+            // act
+            var obj = converter.Convert(expectedHtml);
+            var html = converter.Convert(obj);
+
+            // assert
+            obj.Should().NotBeNull();
+            html.Should().Be(expectedHtml);
         }
     }
 }

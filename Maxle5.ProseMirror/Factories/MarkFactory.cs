@@ -3,11 +3,11 @@ using Maxle5.ProseMirror.Models;
 using Maxle5.ProseMirror.Models.Marks;
 using System.Linq;
 
-namespace Maxle5.ProseMirror.Services
+namespace Maxle5.ProseMirror.Factories
 {
-    internal static class MarkDefinitionFactory
+    internal static class MarkFactory
     {
-        public static MarkDefinition Get(HtmlNode node)
+        public static Mark Get(HtmlNode node)
         {
             if (node.Name == "strong" || node.Name == "b")
             {

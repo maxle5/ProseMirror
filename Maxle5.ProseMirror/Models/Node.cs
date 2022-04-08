@@ -7,14 +7,14 @@ namespace Maxle5.ProseMirror.Models
     {
     }
 
-    public abstract class NodeDefinition
+    public abstract class Node
     {
         public string Type { get; }
         public NodeAttributes Attrs { get; protected set; }
-        public IEnumerable<NodeDefinition> Content { get; set; }
-        public IEnumerable<MarkDefinition> Marks { get; set; }
+        public IEnumerable<Node> Content { get; set; }
+        public IEnumerable<Mark> Marks { get; set; }
 
-        protected NodeDefinition(string type)
+        protected Node(string type)
         {
             Type = type;
         }

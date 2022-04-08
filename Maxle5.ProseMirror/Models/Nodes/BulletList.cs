@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class BulletList : NodeDefinition
+    internal class BulletList : Node
     {
         public BulletList() : base("bulletList")
         {

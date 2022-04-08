@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class TableRow : NodeDefinition
+    internal class TableRow : Node
     {
         public TableRow() : base("tableRow")
         {

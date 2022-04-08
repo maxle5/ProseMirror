@@ -6,12 +6,12 @@ namespace Maxle5.ProseMirror.Models
     {
     }
 
-    public abstract class MarkDefinition
+    public abstract class Mark
     {
         public string Type { get; }
         public MarkAttributes Attrs { get; set; }
 
-        protected MarkDefinition(string type)
+        protected Mark(string type)
         {
             Type = type;
         }

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using HtmlAgilityPack;
+using Maxle5.ProseMirror.Factories;
 using Maxle5.ProseMirror.Models.Marks;
-using Maxle5.ProseMirror.Services;
 using System;
 using Xunit;
 
@@ -30,7 +30,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var mark = MarkDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var mark = MarkFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             mark.Should().NotBeNull();
@@ -46,7 +46,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var mark = MarkDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var mark = MarkFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             mark.Should().NotBeNull();
@@ -62,7 +62,7 @@ namespace Maxle5.ProseMirror.UnitTests.Services
             document.LoadHtml(html);
 
             // act
-            var mark = MarkDefinitionFactory.Get(document.DocumentNode.ChildNodes[0]);
+            var mark = MarkFactory.Get(document.DocumentNode.ChildNodes[0]);
 
             // assert
             mark.Should().BeNull();

@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Nodes
 {
-    internal class HardBreak : NodeDefinition
+    internal class HardBreak : Node
     {
         public HardBreak() : base("hardBreak")
         {

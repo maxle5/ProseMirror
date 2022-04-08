@@ -10,7 +10,7 @@ namespace Maxle5.ProseMirror.Models.Nodes
         public string TextAlign { get; set; } = "left";
     }
 
-    internal class Heading : NodeDefinition
+    internal class Heading : Node
     {
         public Heading(HtmlNode node) : base("heading")
         {

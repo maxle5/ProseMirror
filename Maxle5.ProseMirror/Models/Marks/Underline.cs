@@ -2,7 +2,7 @@
 
 namespace Maxle5.ProseMirror.Models.Marks
 {
-    internal class Underline : MarkDefinition
+    internal class Underline : Mark
     {
         public Underline() : base("underline")
         {
