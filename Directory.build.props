@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AsyncFixer" Version="1.6.0" />
+    <PackageReference Include="Roslynator.Analyzers" version="4.12.10" />
+  </ItemGroup>
+</Project>
